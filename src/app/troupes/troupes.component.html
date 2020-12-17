@@ -1,0 +1,9 @@
+<h1>Troupes</h1>
+
+<button class="accent small" (click)="bearABairn()">Bear a bairn</button>
+
+<div *ngFor="let player of players$ | async">
+  <a [routerLink]="['/player', player.id]">
+    {{ player.name }} - {{ player.troupe }}
+  </a>
+</div>

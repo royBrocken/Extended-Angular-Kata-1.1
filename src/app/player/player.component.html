@@ -1,0 +1,91 @@
+<h1>{{ player?.id ? 'Edit' : 'Add' }} Player</h1>
+
+
+<hr>
+<form [formGroup]="playerForm" (submit)="submitPlayerForm()">
+  <div>ID: {{ player?.id }}</div>
+  <div [ngClass]="{ 'invalid-input': currentMessages.name }">
+    <input placeholder="Name" formControlName="name">
+    <span class="invalid-message">
+      {{ currentMessages?.name?.required }}
+    </span>
+  </div>
+  <div>
+    <input placeholder="Troupe" formControlName="troupe">
+  </div>
+  <div>
+    <input placeholder="Class" formControlName="class">
+  </div>
+  <div>
+    <input placeholder="Alignment" formControlName="alignment">
+  </div>
+
+  <h3>Abilities</h3>
+  <div formGroupName="abilities" style="margin-top:2rem;display:flex;justify-content: space-between;">
+    <div [ngClass]="{ 'invalid-input': currentMessages.abilities?.strength }" 
+      appColorer="green">
+      <input type="number" placeholder="strength" formControlName="strength">
+      <div>
+        {{  playerForm.get("abilities.strength").value | abilityCategory: "Milquetoast.":"So-so.":"Brah.":"Epic!" }}
+      </div>
+      <div class="invalid-message">
+        {{ getError("abilities.strength") }}
+      </div>
+    </div>
+
+    <div [ngClass]="{ 'invalid-input': currentMessages.abilities?.wisdom }" 
+    appColorer="orange">
+      <input type="number" placeholder="wisdom" formControlName="wisdom">
+      <div>
+        {{  playerForm.get("abilities.wisdom").value | abilityCategory: "Derp.":"Sub-genius.":"Clever monkey.":"Nerd!" }}
+      </div>
+      <div class="invalid-message">
+        {{ getError("abilities.wisdom") }}
+      </div>
+    </div>
+    <div [ngClass]="{ 'invalid-input': currentMessages.abilities?.dexterity }" 
+    appColorer="red">
+      <input type="number" placeholder="dexterity" formControlName="dexterity">
+      <div>
+        {{  playerForm.get("abilities.dexterity").value | abilityCategory: "No.":"Butterfingers.":"On skates.":"Cheese roller!" }}
+      </div>
+     <div class="invalid-message">
+        {{ getError("abilities.dexterity") }}
+      </div>
+    </div>
+    <div [ngClass]="{ 'invalid-input': currentMessages.abilities?.intelligence }">
+      <input type="number" placeholder="intelligence" formControlName="intelligence">
+      <div class="invalid-message">
+        {{ getError("abilities.intelligence") }}
+      </div>
+    </div>
+    <div [ngClass]="{ 'invalid-input': currentMessages.abilities?.charisma }">
+      <input type="number" placeholder="charisma" formControlName="charisma">
+      <div class="invalid-message">
+        {{ getError("abilities.charisma") }}
+      </div>
+    </div>
+    <div [ngClass]="{ 'invalid-input': currentMessages.abilities?.constitution }">
+      <input type="number" placeholder="constitution" formControlName="constitution">
+      <div class="invalid-message">
+        {{ getError("abilities.constitution") }}
+      </div>
+    </div>
+  </div>
+
+  <div formArrayName="backgrounds">
+    <div *ngFor="let background of backgrounds.controls; let i = index;">
+      <input placeholder="background" [formControlName]="i">
+      <button class="xsmall danger" (click)="deleteBackground(background)">delete</button>
+      <div class="invalid-message">
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="small accent" (click)="addBackground()">Add a background</button>
+  </div>
+
+  <div>
+    <button class="primary" [disabled]="!playerForm.valid">Submit</button>
+  </div>
+</form>

@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Tillana:wght@400;700&display=swap')
+
+$primary: #990000
+$accent: #107003
+$danger: #a19f0d
+
+body
+  background-color: white
+  margin: 0
+  font-family: 'Special Elite', cursive
+  font-size: 13px
+
+main
+  padding: 15px
+
+a
+  text-decoration: none
+  color: $primary
+  padding: 5px
+  display: block
+
+.primary
+  background-color: $primary
+
+.accent
+  background-color: $accent
+
+.danger
+  background-color: $danger
+  
+button:disabled
+  cursor: not-allowed
+  background-color: grey
+
+button:enabled:hover
+  cursor: pointer
+  filter: brightness(120%)
+
+button
+  border: none
+  padding: 20px
+  margin: 10px
+  color: #eee
+  font-weight: 600
+  font-family: 'Special Elite', cursive
+  letter-spacing: 1px
+  text-transform: uppercase
+  border-radius: 10%
+  outline: none
+  
+  &.small
+    padding: 10px
+    margin: 0
+    text-transform: none
+
+  &.xsmall
+    padding: 5px
+    margin: 0
+    font-size: 0.8rem
+    text-transform: none
+
+input
+  margin: 10px
+  padding: 5px
+  border-left: none
+  border-right: none
+  border-top: thin
+  border-color: rgba(0,0,0,0.4)
+  border-radius: 20% 0 20% 0
+  font-family: 'Special Elite', cursive
+  font-size: 15px
+  line-height: 30px
+
+input:focus
+  outline: none
+  border-bottom-color: #bd0c0cb3
+  background-color: #bd0c0c18
+
+.invalid-message
+  color: $primary
+
+.invalid-input > input
+  background-color: lighten($primary, 10%)
+  color: white
+.invalid-input  > input::placeholder
+  color: rgba(255, 255, 255, 0.8)
+
+input[type=number]
+  width:75px
+
+
+
+

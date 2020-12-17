@@ -1,0 +1,100 @@
+[
+  {
+    "id": "1",
+    "name": "Conan",
+    "troupe": "Cimerians",
+    "class": "fighter",
+    "abilities": {
+      "strength": "10",
+      "wisdom": "10",
+      "dexterity": "10",
+      "intelligence": "10",
+      "charisma": "10",
+      "constitution": "10"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Subatai",
+    "troupe": "Cimerians",
+    "class": "thief",
+    "abilities": {
+      "strength": "10",
+      "wisdom": "10",
+      "dexterity": "10",
+      "intelligence": "10",
+      "charisma": "10",
+      "constitution": "10"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Cyrus",
+    "troupe": "Pdx",
+    "class": "thief",
+    "abilities": {
+      "strength": "10",
+      "wisdom": "10",
+      "dexterity": "10",
+      "intelligence": "10",
+      "charisma": "10",
+      "constitution": "10"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Siralah",
+    "troupe": "Pdx",
+    "class": "sorcerer",
+    "abilities": {
+      "strength": "10",
+      "wisdom": "10",
+      "dexterity": "10",
+      "intelligence": "10",
+      "charisma": "10",
+      "constitution": "10"
+    }
+  },
+  {
+    "id": "5",
+    "name": "Grip",
+    "troupe": "Pdx",
+    "class": "commander",
+    "abilities": {
+      "strength": "15",
+      "wisdom": "15",
+      "dexterity": "15",
+      "intelligence": "15",
+      "charisma": "15",
+      "constitution": "15"
+    }
+  },
+  {
+    "id": "6",
+    "name": "Valeria",
+    "troupe": "Cimerians",
+    "class": "fighter",
+    "abilities": {
+      "strength": "10",
+      "wisdom": "10",
+      "dexterity": "10",
+      "intelligence": "10",
+      "charisma": "10",
+      "constitution": "10"
+    }
+  },
+  {
+    "id": "7",
+    "name": "Yolas",
+    "troupe": "Pdx",
+    "class": "necromancer",
+    "abilities": {
+      "strength": "12",
+      "wisdom": "12",
+      "dexterity": "12",
+      "intelligence": "12",
+      "charisma": "12",
+      "constitution": "12"
+    }
+  }
+]
