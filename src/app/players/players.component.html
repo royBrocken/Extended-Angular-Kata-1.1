@@ -1,0 +1,31 @@
+<div *ngIf="vm$ | async as vm">
+  <h1>Players</h1>
+  <h3>{{ vm.pageTitle }}</h3>
+
+  <button class="accent small" (click)="addPlayer()">Add a player</button>
+
+  <div style="display: flex;">
+
+    <div style="margin: 15px;">
+      <div *ngFor="let player of vm.playersWithAdd" style="margin: 5px;display:flex;">
+        <div style="align-self: center;width:100%;padding-right:10px">
+          {{ player.name }}
+        </div>
+
+        <button class="xsmall accent" [routerLink]="['/player', player.id]">
+          edit
+        </button>
+        <button class="xsmall primary" (click)="onSelectPlayer(player)">
+          view
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="selectedPlayer$ | async as selectedPlayer" style="padding: 15px;border:thick">
+      <h2>{{ selectedPlayer.name }}</h2>
+      <p>{{ selectedPlayer.class }}</p>
+      <p>{{ selectedPlayer.alignment }}</p>
+      <p>{{ selectedPlayer._troupe.name }}</p>
+    </div>
+  </div>
+</div>

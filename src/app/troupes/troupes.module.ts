@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 
 @NgModule({
-  imports: [TroupesRoutingModule, SharedModule, RouterModule],
+  imports: [TroupesRoutingModule, SharedModule, RouterModule, CommonModule],
   declarations: [TroupesRoutingModule.components]
 })
 export class TroupesModule { }

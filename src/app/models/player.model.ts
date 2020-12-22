@@ -1,23 +1,16 @@
-class Model<T> {
-  patch(model: T, values: Partial<T>) {
-    //= Assign values to class properties that appear in values parameter
-    Object.getOwnPropertyNames(model).filter(p =>
-      Object.getOwnPropertyNames(values).includes(p)
-    ).forEach(p => this[p] = values[p])
-  }
-}
+import { Model } from './model.model'
+import { Troupe } from 'app/models/troupe.model'
 
-
-//===============================
 export class Player extends Model<Player> {
-  id: string = null
+  id: number = null
   name: string = "Bloff?"
-  troupe: string = "Redshirts"
+  troupe: number = 3
   alignment: string = "chaotic evil"
   class: string = "fighter"
   armor: string = "none"
   abilities: PlayerAbilities = new PlayerAbilities({})
   backgrounds: string[] = []
+  _troupe?: Troupe
   
   summary: () => string = () => `${this.troupe} - ${this.name}`
 

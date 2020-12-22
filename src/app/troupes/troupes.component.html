@@ -1,9 +1,29 @@
 <h1>Troupes</h1>
 
-<button class="accent small" (click)="bearABairn()">Bear a bairn</button>
+<div style="display: flex;">
 
-<div *ngFor="let player of players$ | async">
-  <a [routerLink]="['/player', player.id]">
-    {{ player.name }} - {{ player.troupe }}
-  </a>
+  <div style="margin: 15px;">
+    <div *ngFor="let troupe of troupes$ | async" 
+      style="margin: 5px;display:flex;">
+
+      <div style="align-self: center;width:100%;padding-right:10px">
+        {{ troupe.name }}
+      </div>
+
+      <button class="xsmall accent" [routerLink]="['/troupe', troupe.id]">
+        edit
+      </button>
+      <button class="xsmall primary" (click)="onSelectTroupe(troupe)">
+        view
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="selectedTroupe$ | async as selectedTroupe" 
+    style="padding: 15px;border:thick">
+    <h2>{{ selectedTroupe.name }}</h2>
+    <p>{{ selectedTroupe.class }}</p>
+    <p>{{ selectedTroupe.alignment }}</p>
+    <p>{{ selectedTroupe.troupe }}</p>
+  </div>
 </div>

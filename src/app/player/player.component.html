@@ -73,16 +73,16 @@
     </div>
   </div>
 
-  <div formArrayName="backgrounds">
+  <div formArrayName="backgrounds" style="padding: 20px 0 20px 0">
     <div *ngFor="let background of backgrounds.controls; let i = index;">
       <input placeholder="background" [formControlName]="i">
       <button class="xsmall danger" (click)="deleteBackground(background)">delete</button>
       <div class="invalid-message">
       </div>
     </div>
-  </div>
-  <div>
-    <button class="small accent" (click)="addBackground()">Add a background</button>
+    <div>
+      <button class="small accent" (click)="addBackground()">Add a background</button>
+    </div>
   </div>
 
   <div>

@@ -11,7 +11,6 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-  
   //xxTODO: create angular site with
   //xxTODO: sass styles (angular.json!)
 
@@ -31,7 +30,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   //xTODO: create unit test
   
   //xTODO: create event bus service
-  
+  //xTODO: create a declarative http/event service that uses mergemap, forkjoin, switchmap
+
   //TODO: create container component with 2 presentation components
   //TODO: use named router-outlet tag to create 2 sidebar components
   //TODO: display immutable vs reference in change detection of component properties
@@ -40,7 +40,6 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   //TODO: create e2e test
   
   //TODO: create http interceptor
-  //TODO: create async data service that uses mergemap, forkjoin, switchmap
   
   //TODO: setup ngrx-data store
  
