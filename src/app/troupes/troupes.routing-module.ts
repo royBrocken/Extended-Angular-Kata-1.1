@@ -1,16 +1,40 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 import { TroupesComponent } from './troupes.component'
+import { NotesComponent } from '../shared/notes/notes.component'
+import { BattlesComponent } from '../shared/battles/battles.component'
 
 const routes: Routes = [
-  { 
-    path: "", component: TroupesComponent
-  }
+  {
+    path: "", component: TroupesComponent,
+  },
+  {
+    path: ":id", component: TroupesComponent,
+
+    children: [
+      {
+        path: "notes",
+        component: NotesComponent,
+        outlet: "sidebar1"
+      },
+      {
+        path: "battles",
+        component: BattlesComponent,
+        outlet: "sidebar1"
+      },
+      {
+        path: "secondary",
+        component: NotesComponent,
+        outlet: "sidebar2"
+      },
+    ]
+  },
+
 ]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
 })
-export class TroupesRoutingModule{
+export class TroupesRoutingModule {
   static components = [TroupesComponent]
 }

@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core"
 import { HttpClient } from "@angular/common/http"
 import { BehaviorSubject, combineLatest, merge, Observable, of, Subject, throwError } from 'rxjs'
 import { Player } from 'app/models/player.model'
-import { catchError, find, map, scan, shareReplay, tap } from 'rxjs/operators'
+import { catchError, map, scan, shareReplay, tap } from 'rxjs/operators'
 import { Troupe } from 'app/models/troupe.model'
 
 @Injectable()
-export class DataService {
+export class DecalarativeDataService {
   readonly playersUrl: string = "assets/data/players.json"
   readonly troupeUrl: string = "assets/data/troupes.json"
 
@@ -80,12 +80,7 @@ export class DataService {
 
   //=================================
   getAllTroupes(): Observable<any[]> {
-    return this.http.get<any[]>(this.troupeUrl).pipe(
-      catchError(e => {
-        console.error(e)
-        return throwError("Error loading troupes!")
-      })
-    )
+    return this.http.get<any[]>(this.troupeUrl)
   }
 
   //=================================
@@ -93,13 +88,11 @@ export class DataService {
     return this.http.get<Player[]>(this.playersUrl)
   }
 
-  selectTroupe(id: number): Observable<Troupe> {
-    if (id===2) return throwError("Error loading selected troupe!")
-    return this.getAllTroupes().pipe(
-      map(troupes =>
-        troupes.find(troupe => troupe.id === id)
-      )
-    )
+
+  // Actions ========================
+  //=================================
+  selectTroupe(id: number) {
+    this.selectTroupeSubject.next(id)
   }
 
   //=================================

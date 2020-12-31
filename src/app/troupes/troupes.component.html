@@ -1,29 +1,51 @@
-<h1>Troupes</h1>
+<div id="header" style="display:flex;justify-content: space-between;">
+  <h1>Troupes</h1>
+  <button class="accent xsmall" (click)="toggleDisplayTroupeColors()">
+    Toggle troupe colors
+  </button>
+</div>
 
-<div style="display: flex;">
-
-  <div style="margin: 15px;">
-    <div *ngFor="let troupe of troupes$ | async" 
-      style="margin: 5px;display:flex;">
-
-      <div style="align-self: center;width:100%;padding-right:10px">
-        {{ troupe.name }}
-      </div>
-
-      <button class="xsmall accent" [routerLink]="['/troupe', troupe.id]">
-        edit
-      </button>
-      <button class="xsmall primary" (click)="onSelectTroupe(troupe)">
-        view
-      </button>
+<div id="troupes">
+  <div *ngFor="let troupe of troupes$ | async" style="display:flex;">
+    <div style="align-self: center;width:100%;padding-right:10px">
+      {{ troupe.name }}
     </div>
+    <button class="xsmall accent" [routerLink]="['/troupe', troupe.id]">
+      edit
+    </button>
+    <button class="xsmall primary" (click)="onSelectTroupe(troupe)">
+      view
+    </button>
   </div>
+</div>
 
-  <div *ngIf="selectedTroupe$ | async as selectedTroupe" 
-    style="padding: 15px;border:thick">
-    <h2>{{ selectedTroupe.name }}</h2>
-    <p>{{ selectedTroupe.class }}</p>
-    <p>{{ selectedTroupe.alignment }}</p>
-    <p>{{ selectedTroupe.troupe }}</p>
+<div id="sidebar" *ngIf="selectedTroupe$ | async as selectedTroupe">
+  <div class="accent" 
+    style="display:flex;justify-content: space-around;"
+    >
+      <a style="color:white;" 
+        [routerLink]="['.', { outlets: { sidebar2: ['secondary'] } }]"
+      >Secondary</a>
+
+      <a style="color:white;" 
+        [routerLink]="['.', { outlets: { sidebar1: ['notes'] }}]"
+      >Notes</a>
+
+      <a style="color:white;" 
+        [routerLink]="['.', { outlets: { sidebar1: ['battles'] }}]"
+      >Battles</a>
+  </div>
+  
+  <router-outlet name="sidebar1">sidebar1</router-outlet>
+
+  <router-outlet name="siedbar2">siedbar2</router-outlet>
+</div>
+
+<div id="selected-troupe">
+  <app-troupe [troupe]="selectedTroupe$ | async" [displayTroupeColors]="displayTroupeColors$ | async"
+    (addTroupeEvent)="addTroupe($event)"></app-troupe>
+
+  <div *ngIf="loadFailures$ | async" class="danger" style="clear:both; margin:20px; padding: 10px;">
+    {{ loadFailures$ | async }}
   </div>
 </div>

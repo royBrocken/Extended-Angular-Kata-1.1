@@ -1,14 +1,21 @@
 [
   {
     "id": 1,
-    "name": "Cimerians"
+    "name": "Cimerians",
+    "colors": ["green", "yellow"]
   },
   {
     "id": 2,
-    "name": "Pdx"
+    "name": "Pdx",
+    "colors": ["blue"]
+  },
+  {
+    "id": 4,
+    "name": "Black Company"
   },
   {
     "id": 3,
-    "name": "Redshirts"
+    "name": "Redshirts",
+    "colors": ["red"]
   }
 ]

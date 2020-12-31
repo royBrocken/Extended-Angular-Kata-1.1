@@ -1,0 +1,46 @@
+@import "src/styles/styles"
+
+//= small screens
+:host
+  height:100%
+  display: grid
+  grid: auto-flow / 1fr
+  grid-template-areas: "header" "nav" "main" "aside" "footer"
+
+//= medium screens
+@media screen and (min-width: 500px)
+  :host
+    grid: min-content min-content 1fr min-content / 2fr minmax(12em, 15%)
+    grid-template-areas: "header header" "nav nav" "main aside" "footer footer"
+
+//= large screens
+@media screen and (min-width: 900px)
+  :host
+    grid: min-content 1fr min-content / max-content 1fr minmax(12em, 15%)
+    grid-template-areas: "header header header" "nav main aside" "footer footer footer"
+
+
+header
+  grid-area: header
+  background-color: $primary
+  color: white
+  padding-left: 2em
+
+nav
+  grid-area: nav
+  background-color: $light-accent
+
+main
+  grid-area: main
+  padding: 2em
+
+aside
+  grid-area: aside
+  background-color: $danger
+  color: white
+  padding: 2em
+
+footer
+  grid-area: footer
+  background-color: $accent
+

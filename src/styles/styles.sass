@@ -2,25 +2,24 @@
 
 $primary: #990000
 $accent: #107003
+$light-accent: #65b35b
 $danger: #a19f0d
 
-html 
+html, body 
   -webkit-text-size-adjust: 100%
   -ms-text-size-adjust: 100%
+  height:100vh
 
 * 
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
   box-sizing: border-box
+  
 
 body
-  background-color: white
   margin: 0
   font-family: 'Special Elite', cursive
   font-size: 13px
-
-main
-  padding: 15px
 
 a
   text-decoration: none
@@ -36,7 +35,9 @@ a
 
 .danger
   background-color: $danger
-  
+  color: white
+  font-weight: bolder
+
 button:disabled
   cursor: not-allowed
   background-color: grey
@@ -91,6 +92,7 @@ input:focus
 .invalid-input > input
   background-color: lighten($primary, 10%)
   color: white
+  
 .invalid-input  > input::placeholder
   color: rgba(255, 255, 255, 0.8)
 

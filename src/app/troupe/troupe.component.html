@@ -1,1 +1,9 @@
-<p>troupe works!</p>
+<div *ngIf="troupe">
+  <div *ngIf="displayTroupeColors" style="display: flex;">
+    <div *ngFor="let color of troupe.colors" [style.backgroundColor]="color" 
+      style="width:100%;height:20px;">
+    </div>
+  </div>
+  <h2>{{ troupe.name }}</h2>
+  <button class="danger" (click)="addTroupe()">Add Troupe</button>
+</div>
