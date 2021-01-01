@@ -1,15 +1,16 @@
-import { Injectable } from "@angular/core"
+import { Inject, Injectable } from "@angular/core"
 import { Actions, createEffect, ofType } from "@ngrx/effects"
 import { of } from "rxjs"
-import { exhaustMap, map, mergeMap, switchMap, catchError, shareReplay } from 'rxjs/operators'
-import { DataService } from '../../core/services/data.service'
+import { map, switchMap, catchError } from 'rxjs/operators'
 import * as TroupeActions from './troupes.actions'
+import { OLD_DATA_SERVICE } from '../../core/core.module'
+import { DataService } from '../../core/services/data.service'
 
 @Injectable()
 export class TroupesEffects {
   constructor(
     private actions$: Actions,
-    private data: DataService
+    @Inject(OLD_DATA_SERVICE) private data: DataService
   ) { }
 
   loadTroupes$ = createEffect(() => {
@@ -19,7 +20,7 @@ export class TroupesEffects {
         return this.data.getAllTroupes().pipe(
           map(troupes => TroupeActions.loadTroupesSuccess({ troupes })),
           catchError(errorMessage => {
-            return of(TroupeActions.loadTroupeFailure({errorMessage}))
+            return of(TroupeActions.loadTroupeFailure({ errorMessage }))
           })
         )
       })

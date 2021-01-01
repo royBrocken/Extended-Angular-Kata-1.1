@@ -6,18 +6,12 @@ import { EventBusService } from '../services/event-bus.service'
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.sass']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent  {
   bairns: any = "???"
 
   constructor(private eventBus: EventBusService) {
     eventBus.on("birth", (d) => {
-      console.log(d)
       this.bairns = d
     })
   }
-
-  ngOnInit(): void {
-
-  }
-
 }

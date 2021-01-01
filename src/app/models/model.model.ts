@@ -7,7 +7,6 @@ export class Model<T> {
     ).forEach(p => {
       if (typeof values[p] !== typeof this[p]) {
         console.log(`Types dont match for property ${p}`)
-        
       }
 
       this[p] = values[p]

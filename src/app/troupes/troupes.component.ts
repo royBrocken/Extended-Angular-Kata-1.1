@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Inject, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { Troupe } from 'app/models/troupe.model'
 import { State } from '../state/app.state'
+import { FART_SALAD } from '../core/core.module'
 import {
   TroupesSelectors,
   TroupesActions,
@@ -41,37 +42,66 @@ function logitProp(message: string): PropertyDecorator {
   templateUrl: './troupes.component.html',
   styleUrls: ['./troupes.component.sass'],
 })
-@logit("hi from troupescomponent")
-export class TroupesComponent implements OnInit {
-  @logitProp("hi from test prop")
-  test = "testing 123"
+// @logit("hi from troupescomponent")
+export class TroupesComponent implements OnInit,
+  OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit,
+  AfterViewChecked, OnDestroy {
+  // @logitProp("hi from test prop")
+  // test = "testing 123"
 
   troupes$ = this.store.select(TroupesSelectors.getTroupes)
   displayTroupeColors$ = this.store.select(TroupesSelectors.getShowTroupeColors)
   selectedTroupe$ = this.store.select(TroupesSelectors.getSelectedTroupe)
   loadFailures$ = this.store.select(TroupesSelectors.getLoadFailure)
 
-  constructor(private store: Store<State>,
-    private router: Router, private route: ActivatedRoute
+  constructor(
+    @Inject(FART_SALAD) private hasFarts,
+    private store: Store<State>,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.troupes$.subscribe(t => console.table(t))
-    this.selectedTroupe$.subscribe(
-      t => console.table(t)
-    )
-  }
+    this.selectedTroupe$
+    // .subscribe(
+    //   t => console.table(t)
+    // )
 
-  @logitMethod("hi from ngOnInit")
+    console.log(hasFarts)
+  }
+  ngAfterContentInit(): void {
+    console.log("ngAfterContentInit")
+  }
+  ngAfterContentChecked(): void {
+    console.log("ngAfterContentChecked")
+  }
+  ngAfterViewInit(): void {
+    console.log("ngAfterViewInit")
+  }
+  ngAfterViewChecked(): void {
+    console.log("ngAfterViewChecked")
+  }
+  ngOnDestroy(): void {
+    console.log("ngOnDestroy")
+  }
+  ngDoCheck(): void {
+    console.log("ngDoCheck")
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("ngOnChanges", changes)
+  }
+  // @logitMethod("hi from ngOnInit")
   ngOnInit(): void {
+    console.log("ngOnInit")
     this.store.dispatch(TroupesActions.loadTroupes())
   }
 
-  onSelectTroupe(@logitParam("hi from onselectTroupe param id") { id }: Troupe) {
+  // onSelectTroupe(@logitParam("hi from onselectTroupe param id") { id }: Troupe) {
+  onSelectTroupe({ id }: Troupe) {
     this.store.dispatch(TroupesActions.loadTroupe({ id }))
-    this.router.navigate([id], {relativeTo: this.route})
+    this.router.navigate([id], { relativeTo: this.route })
   }
 
   toggleDisplayTroupeColors() {
-    console.log("here")
     this.store.dispatch(TroupesActions.toggleShowTroupeColorsAction())
   }
 

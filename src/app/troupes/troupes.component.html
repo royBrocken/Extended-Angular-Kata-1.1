@@ -24,15 +24,11 @@
     style="display:flex;justify-content: space-around;"
     >
       <a style="color:white;" 
-        [routerLink]="['.', { outlets: { sidebar2: ['secondary'] } }]"
-      >Secondary</a>
-
-      <a style="color:white;" 
         [routerLink]="['.', { outlets: { sidebar1: ['notes'] }}]"
       >Notes</a>
 
       <a style="color:white;" 
-        [routerLink]="['.', { outlets: { sidebar1: ['battles'] }}]"
+        [routerLink]="['.', { outlets: { sidebar2: ['battles'] }}]"
       >Battles</a>
   </div>
   

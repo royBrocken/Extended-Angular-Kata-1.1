@@ -51,9 +51,14 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 //xTODO: use named router-outlet tag to create 2 sidebar components
 //==== Note: Named route is wonky, maybe due to lazy loading, does not work off of main child route (path:"")
 
-//TODO: create http interceptor
-//TODO: use all component lifecycle hooks
-//TODO: use token in DI provider definition for service, constant
+//xTODO: create http interceptor that amends request to add Content-Type header
+//xTODO: create http interceptor that logs response body
+//xTODO: create route guard
 
+//xTODO: use DI token in provider definition for service and value (useClass, useValue)
+//xTODO: implement all component lifecycle hooks
+
+
+//TODO: OAuth stuff
 //TODO: create integration test
 //TODO: create e2e test
