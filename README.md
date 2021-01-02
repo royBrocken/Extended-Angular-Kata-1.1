@@ -1,27 +1,48 @@
-# K1
+# Extended Kata 1
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+## Sass
+- create angular site with
+- sass styles (angular.json!) and variables, ie $primary, $accent etc
+- create a responsive header/nav/main/aside/footer layout using display:grid and media queries
 
-## Development server
+## Angular Framework
+- create Core and Shared modules
+- create an http service
+- create partial class generic Model for models
+- create 3 features with routes and component modules
+- user http service in component with sorting (get many)
+- create http service call with filtering (get one)
+- implement lazy loading for features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Reactive Forms
+- create reactive form with formArray/sub-group and validation
+- create route guard for dirty form state
 
-## Code scaffolding
+- create a pipe that uses caching (@memo)
+- create a directive for element attribute
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- create unit test
 
-## Build
+## RxJs
+- create event bus service
+- create a declarative http/event service that uses mergemap, forkjoin, switchmap
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## NgRx
+- setup ngrx state store in 1 feature
+- create initial state and 1 reducer, action, selector
+- hook up async DataService http call using effect (loadTroupe, loadTroupeSuccess)
+- use state observable in a feature component
 
-## Running unit tests
+## More Framework
+- create container component with a presentation component
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- create child router-outlet and 2 routes
+- use named router-outlet tag to create 2 sidebar components
+//==== Note: Named route is wonky, maybe due to lazy loading, does not work off of main child route (path:"")
 
-## Running end-to-end tests
+- create http interceptor that amends request to add Content-Type header
+- create http interceptor that logs response body
+- create route guard
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- use DI token in provider definition for service and value (useClass, useValue)
+- implement all component lifecycle hooks
